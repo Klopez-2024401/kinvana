@@ -1,4 +1,4 @@
-package orr.kaven.kinvana.persistence.entity;
+package org.kaven.kinvana.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,7 +13,7 @@ import lombok.*;
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer codigoCliente;
+    private Integer codigocliente;
     @Column
     private String nombre;
     private String apellido;
