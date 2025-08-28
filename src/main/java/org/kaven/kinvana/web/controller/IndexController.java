@@ -33,5 +33,8 @@ public class IndexController {
         this.clientes.forEach(cliente -> logger.info(cliente.toString()));
 
     }
+    public void agregarCliente(){
+        this.clienteSeleccionado = new Cliente();
+    }
 
 }

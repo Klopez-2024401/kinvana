@@ -21,7 +21,10 @@
                                         update=":formulario-clientes:tabla-clientes"
                                         actionListener="#{indexController.cargarDatos}"/>
 
-                            <p:menuitem value="Nuevo Cliente" icon="pi pi-fw pi-plus"/>
+                            <p:menuitem value="Nuevo Cliente" icon="pi pi-fw pi-plus"
+                            actionListener="#{indexController.agregarCliente}"
+                            update=":formulario-modal:ventana-cliente"
+                            oncomplete="PF('ventanaModalCliente').show()"/>
                         </p:menubar>
                     </div>
 <!--                    Tabla de datos-->
@@ -41,10 +44,73 @@
                                 </div>
                             </f:facet>
                         <!--Todas las columnas-->
-
+                        <p:column headerText="ID">
+                            <h:outputText  value="#{cliente.codigocliente}"/>
+                        </p:column>
+                            <p:column headerText="NOMBRE">
+                                <h:outputText  value="#{cliente.nombre}"/>
+                            </p:column>
+                            <p:column headerText="APELLIDO">
+                                <h:outputText  value="#{cliente.apellido}"/>
+                            </p:column>
+                            <p:column headerText="TELEFONO">
+                                <h:outputText  value="#{cliente.telefono}"/>
+                            </p:column>
+                            <p:column headerText="CORREO">
+                                <h:outputText  value="#{cliente.correo}"/>
+                            </p:column>
+                            <p:column headerText="GENERO">
+                                <h:outputText  value="#{cliente.genero}"/>
+                            </p:column>
+                            <p:column headerText="EDAD">
+                                <h:outputText  value="#{cliente.edad}"/>
+                            </p:column>
+                            <p:column headerText="OPCIÓN">
+                                <p:commandButton value="Editar" icon="pi pi-pencil" class="ui-button-primary">
+                                </p:commandButton>
+                                <p:commandButton value="Eliminar" icon="pi pi-trash" class="ui-button-danger">
+                                </p:commandButton>
+                            </p:column>
                         </p:dataTable>
                     </div>
                 </h:form>
+
+                <h:from id="formulario-modal">
+                    <p:dialog header="Detalle del cliente" showEffect="fade"
+                                modal="true" widgetVar="ventanaModalCliente" responsive="true">
+                        <p:outputPanel id="ventana-cliente" class="ui-fluid">
+                            <div class="field">
+                                <p:outputLabel for="nombre">NOMBRE</p:outputLabel>
+                                <p:inputText  id="nombre" required="true"/>
+                            </div>
+                            <div class="field">
+                                <p:outputLabel for="apellido">APELLIDO</p:outputLabel>
+                                <p:inputText  id="apellido"/>
+                            </div>
+                            <div class="field">
+                                <p:outputLabel for="telefono">TELEFONO</p:outputLabel>
+                                <p:inputText  id="telefono"/>
+                            </div>
+                            <div class="field">
+                                <p:outputLabel for="correo">CORREO</p:outputLabel>
+                                <p:inputText  id="correo" required="true"/>
+                            </div>
+                            <div class="field">
+                                <p:outputLabel for="genero">GENERO</p:outputLabel>
+                                <p:inputText  id="genero"/>
+                            </div>
+                            <div class="field">
+                                <p:outputLabel for="edad">EDAD</p:outputLabel>
+                                <p:inputText  id="edad"/>
+                            </div>
+                        </p:outputPanel>
+                        <f:facet name="footer">
+                            <p:commandButton value="Guardar" icon="pi pi-check" class="ui-button-primary"/>
+                            <p:commandButton value="Cancelar" icon="pi pi-times" class="ui-button-primary"
+                                        onclick="PF('ventanaModalCliente').hide" type="button"/>
+                        </f:facet>
+                    </p:dialog>
+                </h:from>
 
             </div>
 
